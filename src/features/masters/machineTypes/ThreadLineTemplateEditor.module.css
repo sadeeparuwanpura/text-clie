@@ -1,0 +1,67 @@
+.wrap {
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 28px 1fr 100px 140px;
+  align-items: center;
+  gap: var(--tcms-space-4);
+  padding: var(--tcms-space-3) var(--tcms-space-4);
+  border-top: var(--tcms-border-width) solid var(--tcms-border);
+  background: var(--tcms-surface);
+}
+
+.row:first-child {
+  border-top: none;
+}
+
+.roleLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--tcms-space-2);
+  font-size: var(--tcms-font-size-sm);
+  font-weight: 600;
+}
+
+.roleDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.numberInput {
+  font-family: var(--tcms-font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  padding: var(--tcms-space-2);
+  border: var(--tcms-border-width) solid var(--tcms-border-strong);
+  border-radius: var(--tcms-radius);
+  width: 100%;
+}
+
+.numberInput:disabled {
+  background: var(--tcms-workspace);
+  color: var(--tcms-text-muted);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 28px 1fr 100px 140px;
+  gap: var(--tcms-space-4);
+  padding: var(--tcms-space-3) var(--tcms-space-4);
+  background: var(--tcms-header);
+  color: var(--tcms-text-inverse);
+  font-size: var(--tcms-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.error {
+  color: var(--tcms-danger);
+  font-size: var(--tcms-font-size-xs);
+  margin-top: var(--tcms-space-2);
+}

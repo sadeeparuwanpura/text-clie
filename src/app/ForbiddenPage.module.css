@@ -1,0 +1,13 @@
+.wrap {
+  max-width: 480px;
+  margin: var(--tcms-space-7) auto;
+  padding: var(--tcms-space-6);
+  background: var(--tcms-surface);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+}
+
+.hint {
+  color: var(--tcms-text-muted);
+  font-size: var(--tcms-font-size-sm);
+}

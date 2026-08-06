@@ -1,0 +1,36 @@
+.dialog {
+  border: none;
+  border-radius: var(--tcms-radius);
+  padding: 0;
+  max-width: 420px;
+  width: calc(100vw - var(--tcms-space-6) * 2);
+  font-family: var(--tcms-font-ui);
+}
+
+.dialog::backdrop {
+  background: rgba(16, 27, 36, 0.55);
+}
+
+.body {
+  padding: var(--tcms-space-6);
+}
+
+.title {
+  margin: 0 0 var(--tcms-space-2);
+  font-size: var(--tcms-font-size-lg);
+}
+
+.subtitle {
+  color: var(--tcms-text-muted);
+  font-size: var(--tcms-font-size-sm);
+  margin: 0 0 var(--tcms-space-5);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--tcms-space-3);
+  padding: var(--tcms-space-5) var(--tcms-space-6);
+  border-top: var(--tcms-border-width) solid var(--tcms-border);
+  background: var(--tcms-workspace);
+}

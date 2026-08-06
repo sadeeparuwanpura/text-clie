@@ -1,0 +1,69 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--tcms-font-ui);
+  font-size: var(--tcms-font-size-md);
+  color: var(--tcms-text);
+  background: var(--tcms-workspace);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--tcms-font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--tcms-space-4);
+  color: var(--tcms-text);
+}
+
+h1 {
+  font-size: var(--tcms-font-size-xl);
+}
+h2 {
+  font-size: var(--tcms-font-size-lg);
+}
+
+p {
+  margin: 0 0 var(--tcms-space-3);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--tcms-accent);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Numeric columns line up — the whole point of a monospace figure typeface. */
+.tcms-numeric {
+  font-family: var(--tcms-font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--tcms-focus-ring);
+  border-radius: var(--tcms-radius);
+}
+
+button {
+  font-family: inherit;
+}

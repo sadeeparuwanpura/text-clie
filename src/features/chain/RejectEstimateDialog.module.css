@@ -1,0 +1,47 @@
+.dialog {
+  border: none;
+  border-radius: var(--tcms-radius);
+  padding: 0;
+  width: min(480px, 92vw);
+  background: var(--tcms-surface);
+  color: var(--tcms-text);
+}
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.5);
+}
+
+.body {
+  padding: var(--tcms-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--tcms-space-3);
+}
+
+.title {
+  margin: 0;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 96px;
+  padding: var(--tcms-space-3);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+  font-family: var(--tcms-font-ui);
+  background: var(--tcms-surface);
+  color: var(--tcms-text);
+  resize: vertical;
+}
+
+.error {
+  color: var(--tcms-danger);
+  font-size: var(--tcms-font-size-sm);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--tcms-space-3);
+  padding: var(--tcms-space-4) var(--tcms-space-6);
+  border-top: var(--tcms-border-width) solid var(--tcms-border);
+}

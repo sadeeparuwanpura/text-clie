@@ -1,0 +1,37 @@
+.dialog {
+  border: none;
+  border-radius: var(--tcms-radius);
+  padding: 0;
+  max-width: 440px;
+  width: calc(100vw - var(--tcms-space-6) * 2);
+  color: var(--tcms-text);
+  font-family: var(--tcms-font-ui);
+}
+
+.dialog::backdrop {
+  background: rgba(16, 27, 36, 0.55);
+}
+
+.body {
+  padding: var(--tcms-space-6);
+}
+
+.title {
+  margin: 0 0 var(--tcms-space-4);
+  font-size: var(--tcms-font-size-lg);
+}
+
+.message {
+  margin: 0 0 var(--tcms-space-6);
+  color: var(--tcms-text-muted);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--tcms-space-3);
+  padding: var(--tcms-space-5) var(--tcms-space-6);
+  border-top: var(--tcms-border-width) solid var(--tcms-border);
+  background: var(--tcms-workspace);
+}

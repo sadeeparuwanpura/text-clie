@@ -1,0 +1,64 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tcms-space-6);
+  max-width: 560px;
+}
+
+.card {
+  background: var(--tcms-surface);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+  padding: var(--tcms-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--tcms-space-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--tcms-space-5);
+}
+
+.sectionTitle {
+  font-family: var(--tcms-font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: var(--tcms-font-size-sm);
+  color: var(--tcms-text-muted);
+  margin: var(--tcms-space-2) 0 var(--tcms-space-3);
+}
+
+.roleGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tcms-space-4);
+  margin-bottom: var(--tcms-space-5);
+}
+
+.roleOption {
+  display: flex;
+  align-items: center;
+  gap: var(--tcms-space-2);
+  font-size: var(--tcms-font-size-sm);
+}
+
+.roleDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.actions {
+  display: flex;
+  gap: var(--tcms-space-3);
+}
+
+.formError {
+  background: var(--tcms-danger-surface);
+  color: var(--tcms-danger);
+  border-radius: var(--tcms-radius);
+  padding: var(--tcms-space-3);
+  font-size: var(--tcms-font-size-sm);
+}

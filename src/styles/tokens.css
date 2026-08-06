@@ -1,0 +1,85 @@
+/*
+ * Design tokens for the TCMS estimating instrument. Dense, professional, closer to a
+ * CAD tool than a SaaS product (per the product brief) — flat surfaces, hairline borders,
+ * square-ish corners, no shadows/gradients, crimson reserved for primary action only.
+ *
+ * Thread-line role colours are fixed system-wide (SRS FR-UI-07 / 4.4.1): every chip,
+ * table dot and future stitch-schematic must use the same colour for the same role.
+ * Colour is never the only signal — every coloured element also carries a text label.
+ */
+:root {
+  /* Surfaces */
+  --tcms-header: #101b24;
+  --tcms-rail: #2c4356;
+  --tcms-workspace: #eaeeee;
+  --tcms-surface: #ffffff;
+  --tcms-border: #c7cfcf;
+  --tcms-border-strong: #9aa7a7;
+
+  /* Text */
+  --tcms-text: #101b24;
+  --tcms-text-muted: #55636b;
+  --tcms-text-inverse: #ffffff;
+
+  /* Action */
+  --tcms-accent: #c4165c;
+  --tcms-accent-hover: #a30f4c;
+  --tcms-accent-contrast: #ffffff;
+
+  /* State */
+  --tcms-danger: #b3261e;
+  --tcms-danger-surface: #fbe9e8;
+  --tcms-warning: #d19400;
+  --tcms-warning-surface: #fdf3dc;
+  --tcms-success: #0e9a93;
+  --tcms-success-surface: #e2f5f3;
+
+  /* Thread-line role colours — fixed everywhere they appear */
+  --tcms-role-needle: #c4165c;
+  --tcms-role-bobbin: #2c4356;
+  --tcms-role-upper-looper: #0e9a93;
+  --tcms-role-lower-looper: #d19400;
+  --tcms-role-looper: #0e9a93;
+  --tcms-role-spreader: #6f51be;
+
+  /* Type */
+  --tcms-font-ui: 'IBM Plex Sans', system-ui, sans-serif;
+  --tcms-font-heading: 'IBM Plex Sans Condensed', 'IBM Plex Sans', system-ui, sans-serif;
+  --tcms-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --tcms-font-size-xs: 0.6875rem;
+  --tcms-font-size-sm: 0.8125rem;
+  --tcms-font-size-md: 0.9375rem;
+  --tcms-font-size-lg: 1.125rem;
+  --tcms-font-size-xl: 1.5rem;
+
+  /* Spacing */
+  --tcms-space-1: 2px;
+  --tcms-space-2: 4px;
+  --tcms-space-3: 8px;
+  --tcms-space-4: 12px;
+  --tcms-space-5: 16px;
+  --tcms-space-6: 24px;
+  --tcms-space-7: 32px;
+
+  /* Shape */
+  --tcms-radius: 2px;
+  --tcms-border-width: 1px;
+
+  /* Elevation — flat by design; the only "elevation" cue is a focus ring */
+  --tcms-focus-ring: 0 0 0 2px var(--tcms-surface), 0 0 0 4px var(--tcms-accent);
+
+  /* Motion */
+  --tcms-duration-fast: 100ms;
+  --tcms-duration-base: 160ms;
+  --tcms-easing: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Breakpoints (referenced from JS via matchMedia where needed) */
+  --tcms-bp-rail-collapse: 900px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --tcms-duration-fast: 0ms;
+    --tcms-duration-base: 0ms;
+  }
+}

@@ -1,0 +1,27 @@
+.card {
+  background: var(--tcms-surface);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+  padding: var(--tcms-space-6);
+  max-width: 640px;
+}
+
+.roleList {
+  display: flex;
+  gap: var(--tcms-space-2);
+  margin-top: var(--tcms-space-3);
+}
+
+.roleChip {
+  background: var(--tcms-workspace);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+  padding: var(--tcms-space-1) var(--tcms-space-3);
+  font-size: var(--tcms-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.note {
+  margin-top: var(--tcms-space-6);
+}

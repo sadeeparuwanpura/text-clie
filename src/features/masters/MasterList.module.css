@@ -1,0 +1,134 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tcms-space-5);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tcms-space-4);
+}
+
+.toolbar {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--tcms-space-4);
+  flex-wrap: wrap;
+}
+
+.toolbarField {
+  margin-bottom: 0;
+  min-width: 220px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+  background: var(--tcms-surface);
+}
+
+.table {
+  min-width: 640px;
+}
+
+.table thead {
+  background: var(--tcms-header);
+}
+
+.table th {
+  color: var(--tcms-text-inverse);
+  text-align: left;
+  font-size: var(--tcms-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: var(--tcms-space-3) var(--tcms-space-4);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--tcms-space-3) var(--tcms-space-4);
+  border-top: var(--tcms-border-width) solid var(--tcms-border);
+  font-size: var(--tcms-font-size-sm);
+  vertical-align: middle;
+}
+
+.table tbody tr:hover {
+  background: var(--tcms-workspace);
+}
+
+.inactiveRow {
+  color: var(--tcms-text-muted);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--tcms-space-1) var(--tcms-space-3);
+  border-radius: var(--tcms-radius);
+  font-size: var(--tcms-font-size-xs);
+  text-transform: uppercase;
+}
+
+.badgeActive {
+  background: var(--tcms-success-surface);
+  color: var(--tcms-success);
+}
+
+.badgeInactive {
+  background: var(--tcms-border);
+  color: var(--tcms-text-muted);
+}
+
+.roleChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tcms-space-1);
+}
+
+.roleChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tcms-space-1);
+  font-size: var(--tcms-font-size-xs);
+  padding: var(--tcms-space-1) var(--tcms-space-2);
+  border-radius: var(--tcms-radius);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  white-space: nowrap;
+}
+
+.roleDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  gap: var(--tcms-space-2);
+  justify-content: flex-end;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--tcms-space-3);
+  font-size: var(--tcms-font-size-sm);
+  color: var(--tcms-text-muted);
+}
+
+.emptyState {
+  padding: var(--tcms-space-7);
+  text-align: center;
+  color: var(--tcms-text-muted);
+  background: var(--tcms-surface);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+}
+
+.emptyStateAction {
+  margin-top: var(--tcms-space-4);
+}
