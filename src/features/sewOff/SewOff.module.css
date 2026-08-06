@@ -1,0 +1,116 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tcms-space-5);
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--tcms-space-4);
+  flex-wrap: wrap;
+}
+
+.backLink {
+  font-size: var(--tcms-font-size-xs);
+  color: var(--tcms-text-muted);
+  text-decoration: none;
+}
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.title {
+  margin: var(--tcms-space-1) 0 0;
+}
+
+.card {
+  background: var(--tcms-surface);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+  padding: var(--tcms-space-6);
+}
+
+.sectionTitle {
+  font-family: var(--tcms-font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: var(--tcms-font-size-sm);
+  color: var(--tcms-text-muted);
+  margin: 0 0 var(--tcms-space-3);
+}
+
+.toolbar {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--tcms-space-4);
+  flex-wrap: wrap;
+}
+
+.toolbarField {
+  margin-bottom: 0;
+  min-width: 180px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+  background: var(--tcms-surface);
+}
+
+.table {
+  min-width: 760px;
+  width: 100%;
+}
+
+.table thead {
+  background: var(--tcms-header);
+}
+
+.table th {
+  color: var(--tcms-text-inverse);
+  text-align: left;
+  font-size: var(--tcms-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: var(--tcms-space-3);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--tcms-space-2) var(--tcms-space-3);
+  border-top: var(--tcms-border-width) solid var(--tcms-border);
+  font-size: var(--tcms-font-size-sm);
+  vertical-align: middle;
+}
+
+.varianceOk {
+  color: var(--tcms-success);
+  font-family: var(--tcms-font-mono);
+}
+
+.varianceExceeds {
+  color: var(--tcms-danger);
+  font-family: var(--tcms-font-mono);
+  font-weight: 600;
+}
+
+.emptyState {
+  padding: var(--tcms-space-7);
+  text-align: center;
+  color: var(--tcms-text-muted);
+  background: var(--tcms-surface);
+  border: var(--tcms-border-width) solid var(--tcms-border);
+  border-radius: var(--tcms-radius);
+}
+
+.promotedChip {
+  display: inline-block;
+  padding: var(--tcms-space-1) var(--tcms-space-2);
+  border-radius: var(--tcms-radius);
+  font-size: var(--tcms-font-size-xs);
+  background: var(--tcms-success-surface);
+  color: var(--tcms-success);
+}

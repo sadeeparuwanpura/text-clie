@@ -16,6 +16,9 @@ import { MachineTypeEditPage } from '../features/masters/machineTypes/MachineTyp
 import { MachineTypeListPage } from '../features/masters/machineTypes/MachineTypeListPage';
 import { ThreadVarietyEditPage } from '../features/masters/threadVarieties/ThreadVarietyEditPage';
 import { ThreadVarietyListPage } from '../features/masters/threadVarieties/ThreadVarietyListPage';
+import { RequisitionDetailPage } from '../features/requisitions/RequisitionDetailPage';
+import { RequisitionListPage } from '../features/requisitions/RequisitionListPage';
+import { SewOffPage } from '../features/sewOff/SewOffPage';
 import { StyleEditPage } from '../features/styles/StyleEditPage';
 import { StyleListPage } from '../features/styles/StyleListPage';
 import type { Permission } from '../types/permission';
@@ -191,6 +194,32 @@ export function AppRouter() {
         element={
           <Protected permission="estimate:read">
             <EstimatePage />
+          </Protected>
+        }
+      />
+
+      <Route
+        path="/styles/:id/sew-off"
+        element={
+          <Protected permission="sewoff:read">
+            <SewOffPage />
+          </Protected>
+        }
+      />
+
+      <Route
+        path="/requisitions"
+        element={
+          <Protected permission="requisition:read">
+            <RequisitionListPage />
+          </Protected>
+        }
+      />
+      <Route
+        path="/requisitions/:id"
+        element={
+          <Protected permission="requisition:read">
+            <RequisitionDetailPage />
           </Protected>
         }
       />

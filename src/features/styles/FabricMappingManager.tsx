@@ -10,6 +10,7 @@ import { ConfirmDialog } from '../../design-system/ConfirmDialog';
 import { Field } from '../../design-system/Field';
 import { Select } from '../../design-system/Select';
 import { useToast } from '../../design-system/useToast';
+import { useSessionStore } from '../../store/session.store';
 import {
   fabricMappingFormSchema,
   type FabricMappingFormValues,
@@ -29,10 +30,14 @@ export function FabricMappingManager({
   const toast = useToast();
   const queryClient = useQueryClient();
   const [pendingRemove, setPendingRemove] = useState<FabricMapping | null>(null);
+  // A read-only viewer of a style (e.g. PROD) may hold style:read without fabric:read —
+  // fetching the lookup list for them would just 403. Fall back to showing the raw id.
+  const canReadFabrics = useSessionStore((state) => state.permissions.includes('fabric:read'));
 
   const fabricsQuery = useQuery({
     queryKey: ['fabrics', 'all-active'],
     queryFn: () => listFabrics({ limit: 200, isActive: true }),
+    enabled: canReadFabrics,
   });
   const fabricName = (id: string) => {
     const fabric = fabricsQuery.data?.data.find((f) => f.id === id);

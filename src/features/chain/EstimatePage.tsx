@@ -1,6 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { GenerateRequisitionDialog } from '../requisitions/GenerateRequisitionDialog';
+import { generateRequisitionFromEstimate } from '../../api/purchaseRequisition.api';
 import {
   approveEstimate,
   calculatePreview,
@@ -27,6 +29,7 @@ import styles from './Chain.module.css';
 
 export function EstimatePage() {
   const { id: styleId } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const toast = useToast();
   const queryClient = useQueryClient();
   const permissions = useSessionStore((state) => state.permissions);
@@ -34,6 +37,8 @@ export function EstimatePage() {
   const [preview, setPreview] = useState<CalcResult | null>(null);
   const [rejectOpen, setRejectOpen] = useState(false);
   const [viewingId, setViewingId] = useState<string | null>(null);
+  const [requisitionDialogOpen, setRequisitionDialogOpen] = useState(false);
+  const [requisitionNeedsOverride, setRequisitionNeedsOverride] = useState(false);
 
   const chainCheck = useChainCheck(styleId ?? '');
   const historyQuery = useQuery({
@@ -118,6 +123,32 @@ export function EstimatePage() {
       toast.show('A new draft version is open for editing.', 'success');
     },
     onError: (err) => toast.show(toApiError(err).message, 'danger'),
+  });
+
+  const generateRequisitionMutation = useMutation({
+    mutationFn: ({ requiredBy, overrideReason }: { requiredBy: string; overrideReason?: string }) =>
+      generateRequisitionFromEstimate(current!.id, requiredBy, overrideReason),
+    onSuccess: (req) => {
+      setRequisitionDialogOpen(false);
+      setRequisitionNeedsOverride(false);
+      toast.show(`Requisition ${req.reqNo} generated.`, 'success');
+      navigate(`/requisitions/${req.id}`);
+    },
+    onError: (err) => {
+      const apiErr = toApiError(err);
+      if (
+        (apiErr.details as { requiresOverrideReason?: boolean } | undefined)?.requiresOverrideReason
+      ) {
+        setRequisitionNeedsOverride(true);
+        toast.show(
+          'A requisition already exists for this estimate — provide a reason to generate another.',
+          'danger',
+        );
+        return;
+      }
+      toast.show(apiErr.message, 'danger');
+      setRequisitionDialogOpen(false);
+    },
   });
 
   const [exporting, setExporting] = useState<'xlsx' | 'pdf' | null>(null);
@@ -245,6 +276,11 @@ export function EstimatePage() {
                   Revise (open new draft)
                 </Button>
               )}
+              {current.status === 'Approved' && permissions.includes('requisition:write') && (
+                <Button variant="primary" onClick={() => setRequisitionDialogOpen(true)}>
+                  Generate requisition
+                </Button>
+              )}
             </div>
           </div>
           {current.status === 'Rejected' && current.rejectionReason && (
@@ -310,6 +346,19 @@ export function EstimatePage() {
         loading={rejectMutation.isPending}
         onConfirm={(reason) => current && rejectMutation.mutate({ id: current.id, reason })}
         onCancel={() => setRejectOpen(false)}
+      />
+
+      <GenerateRequisitionDialog
+        open={requisitionDialogOpen}
+        loading={generateRequisitionMutation.isPending}
+        requiresOverrideReason={requisitionNeedsOverride}
+        onConfirm={(requiredBy, overrideReason) =>
+          generateRequisitionMutation.mutate({ requiredBy, overrideReason })
+        }
+        onCancel={() => {
+          setRequisitionDialogOpen(false);
+          setRequisitionNeedsOverride(false);
+        }}
       />
     </ChainShell>
   );

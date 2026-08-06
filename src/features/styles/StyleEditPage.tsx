@@ -148,6 +148,14 @@ export function StyleEditPage({ mode }: { mode: 'create' | 'edit' }) {
             >
               Build the chain
             </Button>
+            {permissions.includes('sewoff:read') && (
+              <Button
+                variant="secondary"
+                onClick={() => navigate(`/styles/${existingQuery.data!.id}/sew-off`)}
+              >
+                Sew-off &amp; variance
+              </Button>
+            )}
             {canWrite && (
               <Button variant="secondary" onClick={() => setDuplicateOpen(true)}>
                 Duplicate

@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query';
 import type { ReactNode } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logout as logoutApi } from '../api/auth.api';
@@ -15,6 +16,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: 'Dashboard', to: '/', end: true },
   { label: 'Styles', to: '/styles', permission: 'style:read' },
+  { label: 'Requisitions', to: '/requisitions', permission: 'requisition:read' },
   { label: 'Fabrics', to: '/masters/fabrics', permission: 'fabric:read' },
   { label: 'Machine Types', to: '/masters/machine-types', permission: 'machinetype:read' },
   { label: 'Thread Varieties', to: '/masters/thread-varieties', permission: 'threadvariety:read' },
@@ -30,6 +32,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const permissions = useSessionStore((state) => state.permissions);
   const clearSession = useSessionStore((state) => state.clearSession);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const visibleItems = NAV_ITEMS.filter(
     (item) => !item.permission || permissions.includes(item.permission),
@@ -40,6 +43,11 @@ export function AppShell({ children }: { children: ReactNode }) {
       await logoutApi();
     } finally {
       clearSession();
+      // A stale cached query can otherwise survive into the next session on the same
+      // browser tab (a shared/kiosk terminal, or just switching accounts) and either
+      // flash the previous user's data before refetching, or background-refetch with
+      // the new user's token and fail with a spurious 403 if permissions narrowed.
+      queryClient.clear();
       navigate('/login', { replace: true });
     }
   }
