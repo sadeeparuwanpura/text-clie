@@ -4,7 +4,7 @@ import { useSessionStore } from '../store/session.store';
 const AUTH_ROUTES_EXEMPT_FROM_REFRESH = ['/auth/login', '/auth/refresh'];
 
 export const httpClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:4000/api/v1',
+  baseURL: import.meta.env.VITE_API_BASE_URL ?? 'https://text-ser.onrender.com/api/v1',
   withCredentials: true, // carries the HttpOnly refresh cookie
 });
 
